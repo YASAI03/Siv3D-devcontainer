@@ -1,0 +1,12 @@
+{
+    "name": "C++",
+    "dockerComposeFile": "docker-compose.yml",
+    
+    "service": "app",
+    "workspaceFolder": "/app",
+    "extensions": [
+		"ms-vscode.cpptools"
+	],
+    "remoteUser": "vscode",
+    "postCreateCommand": "cp -Ru /usr/home/OpenSiv3D-main /app/OpenSiv3D"
+}

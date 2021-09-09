@@ -1,0 +1,21 @@
+# for Nvidia OpenGL
+version: '3'
+services:
+  app:
+    image: siv3d-devcontainer-nvidia:latest
+    environment:
+      - "DISPLAY=${DISPLAY}"
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=display,graphics
+    volumes:
+      - ../:/app:cached
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: /bin/sh -c "while sleep 1000; do :; done" 
+    cap_add: 
+      - SYS_PTRACE
+    security_opt: 
+      - seccomp=unconfined
+    devices: 
+      - /dev/dri
+    runtime: nvidia
+      
