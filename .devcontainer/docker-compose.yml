@@ -2,7 +2,7 @@
 version: '3'
 services:
   app:
-    image: registry.hub.docker.com/yasai03/siv3d-devcontainer-nvidia:latest
+    image: registry.hub.docker.com/yasai03/siv3d-devcontainer-nvidia:v0.6.2-squash
     environment:
       - "DISPLAY=${DISPLAY}"
       - NVIDIA_VISIBLE_DEVICES=all

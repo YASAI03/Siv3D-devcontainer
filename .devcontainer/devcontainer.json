@@ -8,5 +8,5 @@
 		"ms-vscode.cpptools"
 	],
     "remoteUser": "vscode",
-    "postCreateCommand": "cp -Ru /usr/home/OpenSiv3D-main /app/OpenSiv3D"
+    "postCreateCommand": "cp -RuT /usr/home/OpenSiv3D-main /app/OpenSiv3D",
 }

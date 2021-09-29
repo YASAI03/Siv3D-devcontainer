@@ -15,6 +15,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get upgrade -
         libcurl4-openssl-dev \
         libgtk-3-dev \
         libgif-dev \
+        libgl1-mesa-glx \
         libglu1-mesa-dev \
         libharfbuzz-dev \
         libmpg123-dev \
@@ -29,14 +30,24 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get upgrade -
         libwebp-dev \
         libxft-dev \
         uuid-dev \
+        mesa-utils \
         xorg-dev
-
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y mesa-utils libgl1-mesa-glx
 
 WORKDIR /usr/home
 
 RUN curl -So OpenSiv3D https://codeload.github.com/Siv3D/OpenSiv3D/zip/refs/heads/main && \
-    unzip OpenSiv3D
+    unzip OpenSiv3D && \
+    rm -rf OpenSiv3D \ 
+    OpenSiv3D-main/macOS \
+    OpenSiv3D-main/Siv3D/lib \
+    OpenSiv3D-main/Siv3D/include/lib \
+    OpenSiv3D-main/Siv3D/include/Siv3D/Windows \
+    OpenSiv3D-main/Siv3D/src/Siv3D-Platform/macOS \
+    OpenSiv3D-main/Siv3D/src/Siv3D-Platform/OpenGLES3 \
+    OpenSiv3D-main/Siv3D/src/Siv3D-Platform/Web \
+    OpenSiv3D-main/Siv3D/src/Siv3D-Platform/WindowsDesktop \
+    OpenSiv3D-main/Web \
+    OpenSiv3D-main/WindowsDesktop
 
 WORKDIR /usr/home/OpenSiv3D-main/Linux/build
 
@@ -45,3 +56,7 @@ RUN cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 WORKDIR /usr/home/OpenSiv3D-main/Linux
 
 RUN cmake --build build
+
+RUN rm -rf \ 
+    /usr/home/OpenSiv3D-main/Linux/build/CMakeFiles
+    

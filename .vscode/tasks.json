@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Siv3D",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/OpenSiv3D/Linux/App/ && mkdir -p build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo .. && cd .. && cmake --build build"
+        }
+    ]
+}
